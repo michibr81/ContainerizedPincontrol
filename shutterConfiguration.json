@@ -1,0 +1,201 @@
+{
+    "gpioPins":{
+        "lockingPins":[            
+        ],
+        "pins":[
+            {
+                "name":"AllShutterFullUp",
+                "number": 13,
+                "timeToHold": 17,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"AllShutterFullDown",
+                "number": 11,
+                "timeToHold": 17,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"AllShutterHalfUp",
+                "number": 13,
+                "timeToHold": 8,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"AllShutterHalfDown",
+                "number": 11,
+                "timeToHold": 8,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"BathShutterFullUp",
+                "number": 12,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"BathShutterFullDown",
+                "number": 15,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"BathShutterHalfUp",
+                "number": 12,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"BathShutterHalfDown",
+                "number": 15,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"OfficeShutterFullUp",
+                "number": 10,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"OfficeShutterFullDown",
+                "number": 16,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"OfficeShutterHalfUp",
+                "number": 10,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"OfficeShutterHalfDown",
+                "number": 16,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"LivingShutterFullUp",
+                "number": 18,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"LivingShutterFullDown",
+                "number": 8,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"LivingShutterHalfUp",
+                "number": 18,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"LivingShutterHalfDown",
+                "number": 8,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterFullUp",
+                "number": 10,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterFullDown",
+                "number": 16,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterHalfUp",
+                "number": 10,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterHalfDown",
+                "number": 16,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterFullUp",
+                "number": 18,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterFullDown",
+                "number": 8,
+                "timeToHold": 15,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterHalfUp",
+                "number": 18,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            },
+            {
+                "name":"SouthShutterHalfDown",
+                "number": 8,
+                "timeToHold": 7,
+                "gpioType": "out",
+                "delayTimeAfterHold":3,
+                "activeLogic":"low"
+            }
+        ]
+
+    }
+}
