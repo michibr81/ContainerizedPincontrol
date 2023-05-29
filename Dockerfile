@@ -1,13 +1,15 @@
 FROM python:3.8
 
-WORKDIR /var/mqtt
+WORKDIR /home
 
 RUN pip install RPi.GPIO
 RUN pip install paho-mqtt
 
-ADD shutterConfiguration.json /var/mqtt
-ADD gpioByJson.py /var/mqtt
-ADD gpioByMQTT.py /var/mqtt
+ADD shutterConfiguration.json /home
+ADD gpioByJson.py /home
+ADD gpioByMQTT.py /home
 
-ENTRYPOINT /var/mqtt
-RUN python /var/mqtt/gpioByMQTT.py dry dry
+
+CMD dir
+CMD python3 /home/gpioByMQTT.py dry dry
+#ADD gpioByJson.py /home
