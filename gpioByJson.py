@@ -5,12 +5,13 @@ initialized = False
 lockingPins = ""
 pins =  ""
 allPins = ""
-onRaspi = False
+#global dryRun
 
-def initialize(configJson, runOnRaspi = False ):
+def initialize(configJson, runDry = False ):
 
-    onRaspi = runOnRaspi
-    if onRaspi:
+    global dryRun
+    dryRun = runDry
+    if not dryRun:
         print("Raspi Mode Enabled")
         import RPi.GPIO as GPIO   
     else:
@@ -34,7 +35,7 @@ def initialize(configJson, runOnRaspi = False ):
             pins = d["pins"]
 
         print("configure board/pins")
-        if onRaspi:
+        if not dryRun:
             GPIO.setmode(GPIO.BOARD)
 
         print("locking pins...")
@@ -58,19 +59,19 @@ def init(pinGroup):
         print(pin["name"] + ", PinNumber:" + str(pin["number"]) + ", " + pin["gpioType"] + ", Active:" + pin["activeLogic"])
         if pin["gpioType"] == "in":  
             print("GPIO.setup(pin[\"number\"],GPIO.IN)")              
-            if onRaspi:
+            if not dryRun:
                 GPIO.setup(pin["number"],GPIO.IN)
         else:
             print("GPIO.setup(pin[\"number\"],GPIO.OUT)")
-            if onRaspi:
+            if not dryRun:
                 GPIO.setup(pin["number"],GPIO.OUT)
         if pin["activeLogic"] == "high":  
             print("GPIO.output(pin[\"activeLogic\"],GPIO.LOW)")              
-            if onRaspi:
+            if not dryRun:
                 GPIO.output(pin["number"],GPIO.LOW)                
         else:
             print("GPIO.output(pin[\"activeLogic\"],GPIO.HIGH)")
-            if onRaspi:
+            if not dryRun:
                 GPIO.output(pin["number"],GPIO.HIGH)
 
         alreadyInitialized.append(pin["number"])
@@ -108,26 +109,26 @@ def resetPin(number,activeLogic):
     print("reset pin " + str(number))
     if activeLogic == "high":  
         print("GPIO.output(" + str(number) +",GPIO.LOW)")             
-        if onRaspi:
+        if not dryRun:
             GPIO.output(number,GPIO.LOW)                
     else:
         print("GPIO.output(" + str(number) +",GPIO.HIGH)")
-        if onRaspi:
+        if not dryRun:
             GPIO.output(number,GPIO.HIGH)
 
 def setPin(number,activeLogic):
     print("set pin " + str(number))
     if activeLogic == "high":  
         print("GPIO.output(" + str(number) +",GPIO.HIGH)")             
-        if onRaspi:
+        if not dryRun:
             GPIO.output(number,GPIO.HIGH)                
     else:
         print("GPIO.output(" + str(number) +",GPIO.LOW)")
-        if onRaspi:
+        if not dryRun:
             GPIO.output(number,GPIO.LOW)
 
 
-initialize("shutterConfiguration.json",True)
+#initialize("shutterConfiguration.json",True)
 
 #controlPinByNameWithLocking("AllShuttersUp")
 
