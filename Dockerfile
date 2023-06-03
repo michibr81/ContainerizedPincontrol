@@ -6,10 +6,10 @@ RUN pip install RPi.GPIO
 RUN pip install paho-mqtt
 
 ADD shutterConfiguration.json /home
-ADD gpioByJson.py /home
 ADD gpioByMQTT.py /home
+ADD gpioByJson.py /home
 
 
 CMD dir
-CMD python3 /home/gpioByMQTT.py dry dry
+CMD python3 /home/gpioByMQTT.py
 #ADD gpioByJson.py /home

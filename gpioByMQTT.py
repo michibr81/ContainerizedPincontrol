@@ -1,15 +1,15 @@
-import gpioByJson as byJson
+import gpioByJson as gpio
 import sys
 import paho.mqtt.client as mqtt
-import time
-
-print(f'First given arg is {sys.argv[0]} second is {sys.argv[1]}')
-
-byJson.initialize("shutterConfiguration.json",runDry=((sys.argv[0] == "dry") or (sys.argv[1] == "dry")))
 
 MQTT_SERVER = '0.0.0.0'
 MQTT_PATH = "MBR/automation/shutters"
 MQTT_PORT = 1883
+
+dryRun=False
+configFilePath = "shutterConfiguration.json"
+ctrl = gpio.gpioByJson(dryRun=dryRun)
+ctrl.initialize(configFilePath)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -18,10 +18,9 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(MQTT_PATH,1)
 
 # The callback for when a PUBLISH message is received from the server.
-def on_message(client, userdata, msg):
+def on_message(client, userdata, msg):  
     print(msg.topic+" "+str(msg.payload)) 
-    sys.stdout.flush()
-    byJson.controlPinByNameWithLocking(msg.payload)
+    ctrl.controlPinByNameWithLocking(msg.payload.decode('ascii'))
 
 client = mqtt.Client("mqtt-gpio-byjson-subscriber")
 client.on_connect = on_connect
@@ -31,11 +30,4 @@ print("before connect")
 client.connect(MQTT_SERVER, MQTT_PORT, 60)
 
 client.loop_forever()
-
-i = 0
-while(True):
-    time.sleep(1)
-    if(i%10 == 0):
-        print(f'mqtt running since {i}')
-        sys.stdout.flush()
 
