@@ -45,7 +45,7 @@ if __name__ == '__main__':
     ctrl = gpio.gpioByJson(dryRun=(args.dryrun == 'True'))
     ctrl.initialize(args.jsonconfig)
 
-    client = mqtt.Client("mqtt-gpio-byjson-subscriber")
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1,"mqtt-gpio-byjson-subscriber")
     client.on_connect = on_connect
     client.on_message = on_message
 

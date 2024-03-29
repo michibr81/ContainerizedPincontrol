@@ -9,7 +9,5 @@ ADD shutterConfiguration.json /home
 ADD gpioByMQTT.py /home
 ADD gpioByJson.py /home
 
-
-CMD dir
 CMD python3 /home/gpioByMQTT.py -d False -p "MBR/automation/shutters" -j "shutterConfiguration.json"
 #ADD gpioByJson.py /home

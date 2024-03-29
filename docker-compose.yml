@@ -1,0 +1,11 @@
+version: "3.8"
+name: pincontrol
+services:  
+  pincontrol:
+    build:
+     context: .
+    network_mode: "host"
+    volumes:
+     - /dev/gpiomem
+    privileged: true
+    restart: always
