@@ -9,3 +9,9 @@ services:
      - /dev/gpiomem
     privileged: true
     restart: always
+    secrets:
+      - mqtt_pw
+
+secrets:
+  mqtt_pw:
+    file: ~/sec/mqtt_pw

@@ -26,11 +26,13 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Gpio control by mqtt subscriber')
-    parser.add_argument('-S','--SERVER', metavar='path', required=False, default="0.0.0.0",help='the mqtt server to publish')
-    parser.add_argument('-P','--PORT', metavar='path', required=False,default=1883, help='the port to publish to')
+    parser.add_argument('-S','--SERVER', metavar='Name or IP', required=False, default="0.0.0.0",help='the mqtt server to publish')
+    parser.add_argument('-P','--PORT', metavar='Port', required=False,default=1883, help='the port to publish to')
     parser.add_argument('-p','--path', metavar='path', required=True, help='the mqttt path to publish')
-    parser.add_argument('-d','--dryrun', metavar='path', required=False, default=True, help='set to False to run in production mode')
-    parser.add_argument('-j','--jsonconfig', metavar='path', required=True, default=True, help='the path to the pin configuration file')
+    parser.add_argument('-d','--dryrun', metavar='True or False', required=False, default=True, help='set to False to run in production mode')
+    parser.add_argument('-j','--jsonconfig', metavar='CONFIGFILE', required=True, default=True, help='the path to the pin configuration file')
+    parser.add_argument('-u','--user', metavar='USERNAME', required=False, default='', help='the name of the mqtt user')
+    parser.add_argument('-pw','--password', metavar='PASSWORDFILE', required=False, default='', help='the path to the mqtt passsword file')
     args = parser.parse_args()
 
     print(f"Server {args.SERVER}")
@@ -38,6 +40,8 @@ if __name__ == '__main__':
     print(f"Mqtt Path {args.path}")
     print(f"Dry run {args.dryrun}")
     print(f"Pin configuration file {args.jsonconfig}")
+    print(f"Mqtt username {args.user}")
+    print(f"Password file {args.password}")
     sys.stdout.flush()
 
     MQTT_PATH = args.path
@@ -51,6 +55,14 @@ if __name__ == '__main__':
 
     print("before connect")
     sys.stdout.flush()
+
+    if args.password != '' and args.user != '':
+        print("mqtt username and password are set")
+        sys.stdout.flush()
+        with open(args.password, 'r') as file:
+            pw = file.read().strip().replace("\n", "")
+        client.username_pw_set(args.user,pw)
+
     client.connect(args.SERVER, args.PORT)
 
     client.loop_forever()
