@@ -29,11 +29,13 @@ CMD python3 /home/gpioByMQTT.py -d False -p "MBR/automation/shutters" -j "shutte
 runs [gpioByMQTT.py](gpioByMQTT.py) given a specific topic and conifguration. MQTT-Settings are left default. 
 
 ```py
-parser.add_argument('-S','--SERVER', metavar='path', required=False, default="0.0.0.0",help='the mqtt server to publish')
-parser.add_argument('-P','--PORT', metavar='path', required=False,default=1883, help='the port to publish to')
-parser.add_argument('-p','--path', metavar='path', required=True, help='the mqttt path to publish')
-parser.add_argument('-d','--dryrun', metavar='path', required=False, default=True, help='set to False to run in production mode')
-parser.add_argument('-j','--jsonconfig', metavar='path', required=True, default=True, help='the path to the pin configuration file')    
+    parser.add_argument('-S','--SERVER', metavar='Name or IP', required=False, default="0.0.0.0",help='the mqtt server to publish')
+    parser.add_argument('-P','--PORT', metavar='Port', required=False,default=1883, help='the port to publish to')
+    parser.add_argument('-p','--path', metavar='path', required=True, help='the mqttt path to publish')
+    parser.add_argument('-d','--dryrun', metavar='True or False', required=False, default=True, help='set to False to run in production mode')
+    parser.add_argument('-j','--jsonconfig', metavar='CONFIGFILE', required=True, default=True, help='the path to the pin configuration file')
+    parser.add_argument('-u','--user', metavar='USERNAME', required=False, default='', help='the name of the mqtt user')
+    parser.add_argument('-pw','--password', metavar='PASSWORDFILE', required=False, default='', help='the path to the mqtt passsword file') 
 ```
 
 > It's mandatory to build the image directly on Raspberry Pi to ensure it is working on that architecture. The build command itself can be performed as usually in the folder where the Dockerfile is located.
