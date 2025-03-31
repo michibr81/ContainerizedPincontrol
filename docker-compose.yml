@@ -1,10 +1,13 @@
-version: "3.8"
 name: pincontrol
 services:  
   pincontrol:
+    container_name: pincontrol
     build:
      context: .
-    network_mode: "host"
+    #ports:
+    # - 1883:1883 internal communication over network!
+    networks:
+     - mqtt_network	
     volumes:
      - /dev/gpiomem
     privileged: true
@@ -15,3 +18,7 @@ services:
 secrets:
   mqtt_pw:
     file: ~/sec/mqtt_pw
+
+networks:
+  mqtt_network:
+    external: true
